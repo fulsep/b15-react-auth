@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import {
   Row, Col, Jumbotron, Container,
-  FormGroup, Input, Button, Label,
+  Form, FormGroup, Input, Button, Label,
   Modal, ModalHeader, ModalBody, ModalFooter
 } from 'reactstrap'
 import {Link} from 'react-router-dom'
@@ -21,7 +21,8 @@ export default class Login extends Component {
     this.onFormChange = (e,form) => {
       this.setState({[form]:e.target.value})
     }
-    this.onLogin = () => {
+    this.onLogin = (e) => {
+      e.preventDefault()
       this.setState({isLoading:true})
       const {username, password} = this.state
       if((username === 'admin') && (password === 'admin')){
@@ -57,19 +58,21 @@ export default class Login extends Component {
             </Jumbotron>
           </Col>
           <Col md={6}>
-            <FormGroup>
-              <Label>Username</Label>
-              <Input type='text' onChange={(e)=> this.onFormChange(e,'username')} />
-            </FormGroup>
-            <FormGroup>
-              <Label>Password</Label>
-              <Input type='password' onChange={(e)=> this.onFormChange(e,'password')} />
-            </FormGroup>
-            <Row>
-              <Col md={12} className='text-right'>
-                <Button onClick={this.onLogin} color='primary'>Login</Button>
-              </Col>
-            </Row>
+            <Form onSubmit={e=>this.onLogin(e)}>
+              <FormGroup>
+                <Label>Username</Label>
+                <Input type='text' onChange={(e)=> this.onFormChange(e,'username')} />
+              </FormGroup>
+              <FormGroup>
+                <Label>Password</Label>
+                <Input type='password' onChange={(e)=> this.onFormChange(e,'password')} />
+              </FormGroup>
+              <Row>
+                <Col md={12} className='text-right'>
+                  <Button type='submit' color='primary'>Login</Button>
+                </Col>
+              </Row>
+            </Form>
           </Col>
         </Row>
       </Container>
@@ -79,7 +82,7 @@ export default class Login extends Component {
           Wrong Username or Password
         </ModalBody>
         <ModalFooter>
-          <Button onClick={()=>this.setState({showModal: false})} color='primary'>OK</Button>
+          <Button autoFocus onClick={()=>this.setState({showModal: false})} color='primary'>OK</Button>
         </ModalFooter>
       </Modal>
       {this.state.isLoading && (<Loading/>)}

@@ -6,6 +6,7 @@ import history from './utils/history'
 import Navbar from './components/Navbar'
 
 /* Pages */
+import Home from './pages/Home'
 import Login from './pages/Login'
 import Dashboard from './pages/Dashboard'
 
@@ -32,7 +33,7 @@ class App extends React.Component{
         <Router history={history}>
           <Navbar isLogin={this.state.isLogin} check={()=>this.checkLogin()} />
           <Switch>
-            <Route path='/' exact>Hello</Route>
+            <Route path='/' exact render={(props)=><Home {...props}/>} />
             <Route path='/login' render={(props)=><Login {...props} check={()=>this.checkLogin()}  />} exact />
             <Route path='/dashboard' render={(props)=><Dashboard {...props} />} exact></Route>
           </Switch>

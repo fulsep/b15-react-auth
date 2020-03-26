@@ -5,6 +5,7 @@ import {Spinner} from 'reactstrap'
 
 const Parent = styled('div')`
   position: fixed;
+  overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -23,6 +24,16 @@ const Child = styled(Spinner)`
 `
 
 export default class Loading extends Component {
+  constructor(props){
+    super(props)
+    this.bodyClass = document.getElementsByTagName('body')[0].classList
+  }
+  componentDidMount(){
+    this.bodyClass.add('modal-open')
+  }
+  componentWillUnmount(){
+    this.bodyClass.remove('modal-open')
+  }
   render() {
     return (
       <Parent>

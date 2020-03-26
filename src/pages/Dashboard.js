@@ -32,19 +32,19 @@ export default class Dashboard extends Component {
                 <Link to='/dashboard'>Home</Link>
               </ListGroupItem>
               <ListGroupItem>
-                <Link>Management User</Link>
+                <Link to='/'>Management User</Link>
               </ListGroupItem>
               <ListGroupItem>
-                <Link>Management Route</Link>
+                <Link to='/'>Management Route</Link>
               </ListGroupItem>
               <ListGroupItem>
-                <Link>Management Agent</Link>
+                <Link to='/'>Management Agent</Link>
               </ListGroupItem>
               <ListGroupItem>
-                <Link>Management Busses</Link>
+                <Link to='/'>Management Busses</Link>
               </ListGroupItem>
               <ListGroupItem>
-                <Link>Management Schedule</Link>
+                <Link to='/'>Management Schedule</Link>
               </ListGroupItem>
             </ListGroup>
           </Col>

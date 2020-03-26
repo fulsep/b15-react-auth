@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import {Spinner} from 'reactstrap'
 
 const Parent = styled('div')`
-  position: absolute;
+  position: fixed;
   display: flex;
   justify-content: center;
   align-items: center;
